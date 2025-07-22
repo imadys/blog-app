@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -24,13 +24,13 @@ export default function TabThreeScreen() {
         <ThemedText type="title">Blog</ThemedText>
       </ThemedView>
       <ThemedText>Latest blogs</ThemedText>
-      {!loading && posts.length > 0 ? (
-        <FlatList
-        data={posts}
-        renderItem={({item}) => <Item title={item.title} id={item.id} />}
-        keyExtractor={item => item.id}
-      />
-      ) : (<Text>Loading...</Text>)}
+      {loading ? (
+        <Text>Loading...</Text>
+      ) : (
+        posts.map((item) => (
+          <Item key={item.id} title={item.title} id={item.id} />
+        ))
+      )}
 
     </ParallaxScrollView>
   );
