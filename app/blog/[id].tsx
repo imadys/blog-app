@@ -1,7 +1,5 @@
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { usePost } from '@/hooks/usePosts';
 import { router, useLocalSearchParams, useNavigation } from 'expo-router';
 import { useEffect } from 'react';
@@ -28,20 +26,11 @@ export default function BlogPost() {
     }
 
     return (
-        <ParallaxScrollView
-            headerBackgroundColor={{ light: '#82181a', dark: '#82181a' }}
-            headerImage={
-                <IconSymbol
-                    size={310}
-                    color="#e7000b"
-                    name="newspaper.fill"
-                />
-            }>
-            <ThemedView style={{ flex: 1, padding: 20 }}>
-                <ThemedText type="title">{data.title}</ThemedText>
-                <ThemedText style={{ marginBottom: 24 }}>{data.body}</ThemedText>
-                <Button title="Go back" onPress={() => router.push("/blog")} />
-            </ThemedView>
-        </ParallaxScrollView>
+
+        <ThemedView style={{ flex: 1, padding: 20 }}>
+            <ThemedText type="title">{data.title}</ThemedText>
+            <ThemedText style={{ marginBottom: 24 }}>{data.body}</ThemedText>
+            <Button title="Go back" onPress={() => router.push("/blog")} />
+        </ThemedView>
     );
 }
